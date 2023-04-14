@@ -1,0 +1,8 @@
+1) Select * from employee WHERE MAX(salary);
+
+2) Select d.Name from department d join employee e on d.Id = e.department_id 
+where e.salary = (select max(salary) from employee)
+
+3) select d_Name from (select top 1 sum(salary) as sum_salary, department.Name as d_Name
+from department d join employee e on d.Id = e.department_id group by department_id
+order by sum_salary desc) temp
